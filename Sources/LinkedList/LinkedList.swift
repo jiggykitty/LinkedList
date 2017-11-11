@@ -28,15 +28,18 @@ public class LinkedList<T: Equatable>: CustomStringConvertible, Equatable {
 
   public init() {}
 
-  public subscript(index: Int) -> T {
+  public subscript(index: Int) -> T? {
     // I've read that subscripts cannot throw errors
     // Even if they did, I would have to handle them with try every time I use them
     // I will do that already when I'm using insert or remove
     // So I will use an assertion here
 
-    let node = self.node(atIndex: index)
-    assert(node != nil)
-    return node!.item
+    if let node = self.node(atIndex: index) {
+      return node.item
+    }
+    else {
+      return nil
+    }
   }
 
   public static func == (lhs: LinkedList<T>, rhs: LinkedList<T>) -> Bool {
