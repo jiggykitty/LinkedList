@@ -14,7 +14,7 @@ public class Node<T: Equatable> {
 
 public class LinkedList<T: Equatable>: CustomStringConvertible, Equatable {
   var head: Node<T>?
-  var size: Int = 0
+  public var size: Int = 0
 
   public var description: String {
     var list: [T] = []
